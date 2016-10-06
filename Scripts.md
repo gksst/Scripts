@@ -5,16 +5,10 @@
 - [はじめに](#intro)
 - [インデント](#indentation)
 - [空白](#whitespace)
-- [1行の文字数](#line-columns)
 - [数値](#number)
-- [文字列](#string)
-- [正規表現](#regexp)
-- [配列, ハッシュ](#object)
-- [変数名](#variable)
-- [関数](#function)
-- [演算子](#operator)
-- [this](#this)
-- [JavaScriptの埋め込み](#embed-javascript)
+- [プリンタースクリプト](#string)
+- [ネットワークスクリプト](#regexp)
+- [リネームスクリプト](#object)
 - [雛形](#boilerplate)
 
 <hr id="intro" />
@@ -49,20 +43,14 @@ if foo < 10
 
 <hr id="line-columns" />
 
-## 1行の文字数
-- **[SHOULD]** 1行の文字数をなるべく80文字以内に納めるようする (全角文字は2文字と数えること)
-- **[MUST]** 1行の文字数が128文字を越えてはならない
-
-<hr id="number" />
-
-## 数値
+## プリンタースクリプト
 - **[MUST]** 数値は理由がない限り、変数に入れてから使う。その時、変数名は英字の大文字とアンダースコアを使い、定数のように定義する
   - 0や1などの数値で、意味が明確であれば直接使っても良い
 
 
 <hr id="string" />
 
-## 文字列
+## ネットワークスクリプト
 - **[SHOULD]** 文字列内部のエスケープシーケンスが少なくなるように適切な区切り記号を使用する
   - HTMLにダブルクォートを使用するので、シングルクォートを推奨する
 - **[MUST]** 文字列を連結するときは式展開 ```"#{foo}"``` を使うこと
@@ -70,142 +58,12 @@ if foo < 10
 
 <hr id="regexp" />
 
-## 正規表現
+## リネームスクリプト
 - **[MUST]** キャプチャを利用する場合、不要な後方参照を作らないようにする
 - **[SHOULD]** /を含む正規表現を書くときは必要に応じて```///[regexp]///```を使用する
 
 <hr id="object" />
 
-## 配列, ハッシュ
-- **[SHOULD]** 複数行の配列/ハッシュリテラルを書くときは , を省略する
-
-```coffeescript
-foo = [
-  'aaaaaa'
-  'bbbbbb'
-  'cccccc'
-]
-bar =
-  aaa: 'aaaaaa'
-  bbb: 'bbbbbb'
-  ccc: 'cccccc'
-```
-
-<hr id="variable" />
-
-## 変数名
-- **[MUST]** JavaScriptの命名規則に従う
-  - 変数名は camelCase で、クラスのみ PascalCase にする
-- **[SHOULD]** 検索しやすい名前を意識する
-  - 短すぎる名前や省略形は避け、変数名に $ は基本的に使用しない。記号は検索しにくい場合があるので、必要以上に使用しないことが望ましい。
-
-<hr id="function" />
-
-## 関数
-- **[MUST]** ```->```の前後にはスペースを空ける
-
-```coffeescript
-foo = (arg1, arg2) -> # Good
-foo = (arg1, arg2)-> # Bad
-```
-
-
-- **[SHOULD]** 引数がないときは括弧を省略する
-
-```coffeescript
-bar = -> # Good
-bar = () -> # Bad
-```
-
-- **[MUST]** メソッドの呼び出しの括弧は基本的に省略しない
-  - 括弧を省略するほうが「書きやすい」が、省略されていない方が「読みやすい」ので、読む方を優先する
-
-```coffeescript
-# Good
-bar.css(top: '10px', left: '10px')
-
-# Bad
-bar.css top: '10px', left: '10px'
-
-# Good
-bar.bind('click', (evt) ->
-  evt.preventDefault()
-)
-
-# Bad
-foo.bind 'click', (evt) ->
-  evt.preventDefault()
-
-# Good
-clickHandler = (evt) ->
-  evt.preventDefault()
-
-foo.bind('click', clickHandler)
-```
-
-- **[SHOULD]** ```this``` を保持したい場合は ```=>``` を使う
-
-```coffeescript
-# Good
-$(this).delegate('a', 'click', (evt) =>
-  $(this)...
-)
-
-# Bad
-that = this
-$(this).delegate('a', 'click', (evt) ->
-  $(that)...
-)
-```
-
-
-<hr id="operator" />
-
-## 演算子
-
-- **[MUST]** CoffeeScriptには演算子のエイリアスがあるが、エイリアスはコードの統一を阻害する面があるので、原則使用しない
-具体的には、
-
-```coffeescript
-and, or, is, isnt
-```
-
-ではなく、
-
-```coffeescript
-&&, ||, ==, !=
-```
-
-を使用する
-
-<hr id="this" />
-
-## this
-
-**[MUST]** 単体で @ を使用しない。
-```coffeescript
-$(this)     # OK
-$(@)        # NG
-$(this.foo) # OK
-$(@foo)     # OK
-```
-
-<hr id="embed-javascript" />
-
-## JavaScriptの埋め込み
-
-**[MUST]** 
-
-```coffeescript
-a = true
-`var x = a ? 1 : 2;`
-console.log(x) # 1 
-```
-のように、CoffeeScriptの中にJavaScriptを埋め込むことができるが、この書き方は使ってはいけない。
-原則として、(テンプレートエンジンを除いて)ある言語に別の言語を埋め込む書き方は推奨されません。
-
-
-<hr id="boilerplate" />
 
 # 雛形
 
