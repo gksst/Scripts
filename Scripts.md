@@ -1,4 +1,4 @@
-# Cookpad CoffeeScript Coding Style Guide
+# Script
 
 # 目次
 
