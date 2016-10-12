@@ -11,7 +11,7 @@
 
 ## はじめに
 
-1. Githubには書き方がある**Markdown**と調べればいくらでも出てくる。[Markdownでいこう](http://histudy.doorkeeper.jp/)
+1. Githubには書き方がある**Markdown**と調べればいくらでも出てくる。[Markdownでいこう](https://gist.github.com/wate/7072365)
 
 2. スクリプトには書き方がある、私はクックパッド社_CoffeeScrip_のスタイルガイドを基準として書くようにしている。
 
