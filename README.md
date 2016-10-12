@@ -27,17 +27,12 @@ while num < 2 do
 end
 print("End")
 ```
+
 <hr id="netsc" />
 ## ネットワークスクリプト
 準備中
-```
-num = 0
-while num < 2 do
-   print("num = ", num)
-end
-print("End")
-```
+
+
 <hr id="rename" />
 ## リネームスクリプト
-準備中
-~~打ち消し線~~
+準備中　~~打ち消し線~~
