@@ -31,7 +31,11 @@ print("End")
 ## ネットワークスクリプト
 準備中
 ```
-ソースコードをここに書く
+num = 0
+while num < 2 do
+   print("num = ", num)
+end
+print("End")
 ```
 <hr id="rename" />
 ## リネームスクリプト
