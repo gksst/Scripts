@@ -11,7 +11,7 @@
 
 ## はじめに
 
-1. Githubには書き方がある**Markdown**と調べればいくらでも出てくる。参考URL[Markdownでいこう](http://histudy.doorkeeper.jp/)
+1. Githubには書き方がある**Markdown**と調べればいくらでも出てくる。[Markdownでいこう](http://histudy.doorkeeper.jp/)
 
 2. スクリプトには書き方がある、私はクックパッド社_CoffeeScrip_のスタイルガイドを基準として書くようにしている。
 
@@ -20,11 +20,20 @@
 ## プリンタースクリプト
 準備中
 
+```rb
+num = 0
+while num < 2 do
+   print("num = ", num)
+end
+print("End")
+```
 <hr id="netsc" />
 ## ネットワークスクリプト
 準備中
-
+```
+ソースコードをここに書く
+```
 <hr id="rename" />
 ## リネームスクリプト
 準備中
-_________
+~~打ち消し線~~
