@@ -37,7 +37,7 @@ while num < 2 do
 end
 print("End")
 ```
-(#rename)
+<hr id="rename" />
 ## リネームスクリプト
 準備中
 ~~打ち消し線~~
