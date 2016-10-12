@@ -2,16 +2,16 @@
 
 # 目次
 
-- [はじめに](#intro)
+- [はじめに](#first)
 - [インデント](#indentation)
 - [空白](#whitespace)
 - [数値](#number)
-- [プリンタースクリプト](#string)
-- [ネットワークスクリプト](#regexp)
-- [リネームスクリプト](#object)
+- [プリンタースクリプト](#printscript)
+- [ネットワークスクリプト](#netsc)
+- [リネームスクリプト](#rename)
 - [雛形](#boilerplate)
 
-<hr id="intro" />
+<hr id="first" />
 
 ## はじめに
 
@@ -41,14 +41,15 @@ if foo < 10
 [foo, bar] = [bar, foo]
 ```
 
-<hr id="line-columns" />
+<hr id="indentation" />
 
 ## プリンタースクリプト
+
 - **[MUST]** 数値は理由がない限り、変数に入れてから使う。その時、変数名は英字の大文字とアンダースコアを使い、定数のように定義する
   - 0や1などの数値で、意味が明確であれば直接使っても良い
 
 
-<hr id="string" />
+<hr id="printscript" />
 
 ## ネットワークスクリプト
 - **[SHOULD]** 文字列内部のエスケープシーケンスが少なくなるように適切な区切り記号を使用する
@@ -63,73 +64,3 @@ if foo < 10
 - **[SHOULD]** /を含む正規表現を書くときは必要に応じて```///[regexp]///```を使用する
 
 <hr id="object" />
-
-
-# 雛形
-
-以下は、 CoffeeScript を書く際の 雛形 を示す。
-雛形はよく使う書き方なので、読みやすさだけでなく、書きやすさも考慮する。そのため、例外的に括弧の省略を行っている。
-
-## DOM Ready
-
-### jQuery only
-
-```coffeescript
-jQuery ($) ->
-  # code...
-```
-
-Result:
-
-```js
-jQuery(function($) {
-  // code...
-});
-```
-
-### jQuery & Zepto
-
-```coffeescript
-(this.Zepto || this.jQuery) ($) ->
-  # code...
-```
-
-Result:
-
-```js
-(this.Zepto || this.jQuery)(function($) {
-  // code...
-});
-```
-
-## 即時関数
-
-### jQuery only
-
-```coffeescript
-do ($ = jQuery) ->
-  # code...
-```
-
-Result:
-
-```js
-(function($) {
-  // code...
-})(jQuery);
-```
-
-### jQuery & Zepto
-
-```coffeescript
-do ($ = this.Zepto || this.jQuery) ->
-  # code...
-```
-
-Result:
-
-```js
-(function($) {
-  // code...
-})(this.Zepto || this.jQuery);
-```
