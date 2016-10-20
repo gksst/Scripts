@@ -6,7 +6,7 @@
 - [プリンタースクリプト](#printscript)
 - [ネットワークスクリプト](#netsc)
 - [リネームスクリプト](#rename)
-- [down](down)
+- [ATOMでC言語を使い開発する環境構築](ATOM)
 <hr id="first" />
 
 ## はじめに
@@ -35,4 +35,4 @@ print("End")
 
 <hr id="rename" />
 ## リネームスクリプト
-準備中　~~打ち消し線~~
+準備中
