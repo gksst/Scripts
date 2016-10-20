@@ -2,7 +2,7 @@
 # 目次
 
 - [はじめに](#first)
-- [プリンタースクリプト](#1)
+- [コンパイルエラー対処法](#1)
 - [ネットワークスクリプト](#2)
 - [リネームスクリプト](#3)
 <hr id="first" />
@@ -15,22 +15,34 @@ Atomとは拡張機能が豊富なエディターソフトです。　
 
 
 <hr id="1" />
-## プリンタースクリプト
-準備中
+## 下記のコンパイルエラー対処法
+*Pthread*関係で次のファイルをダウンロードする．
+libpthread-2.8.0-3-mingw32-dll-2.tar.lzma
+pthreads-w32-2.8.0-3-mingw32-dev.tar.lzma
+lzmaで圧縮されているので，7zipで展開する。
 
-```rb
-num = 0
-while num < 2 do
-   print("num = ", num)
-end
-print("End")
 ```
+libpthread-2.8.0-3-mingw32-dll-2.tar.lzma
+> bin > pthreadGC2.dll pthreadGCE2.dll
+.dillファイルを
+*MinGW\bin\*
+に移動もしくわコピペ。
 
-<hr id="2" />
-## ネットワークスクリプト
-準備中
+pthreads-w32-2.8.0-3-mingw32-dev
+include > pthread.h sched.h semaphore.h
+.hファイルを
+*MinGW\include\*
+に移動。
 
+同じ要領で
+libの展開ファイル
+ .aファイルも　
+*MinGW\lib\*
+に移動。
+```
+コマンドプロンプでcdを使いCファイルのフォルダまで移動する。
+以下のコマンドを入力する。
 
-<hr id="3" />
-## リネームスクリプト
-準備中　~~打ち消し線~~
+　例としてtest.cというCファイルがあると定義する。
+>gcc -o test test.c
+同フォルダにtest.exeが生成される。
