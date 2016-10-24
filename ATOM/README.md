@@ -50,5 +50,5 @@ libの展開ファイル
 <hr id="2" />
 ## 実行結果画面がすぐ閉じる現象
 
-#include <stdlib.h>を読み込ませる
-処理の終わりにsystem("pause");入れてあげる
+include <stdlib.h>を読み込ませる
+そして、処理の終わりにsystem("pause");入れてあげる
