@@ -16,7 +16,7 @@ Atomとは拡張機能が豊富なエディターソフトです。
 
 <hr id="1" />
 ## 下記のコンパイルエラー対処法
-![コマンドプロンプトでのコンパイルエラー](image/AtomでC言語がコンパイルできない.PNG)
+![コマンドプロンプトでのコンパイルエラー](https://github.com/gksst/Scripts/blob/master/image/Atom%E3%81%A7C%E8%A8%80%E8%AA%9E%E3%81%8C%E3%82%B3%E3%83%B3%E3%83%91%E3%82%A4%E3%83%AB%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84.PNG)  
 *Pthread*関係で次のファイルをダウンロードする  
 libpthread-2.8.0-3-mingw32-dll-2.tar.lzma  
 pthreads-w32-2.8.0-3-mingw32-dev.tar.lzma　　
