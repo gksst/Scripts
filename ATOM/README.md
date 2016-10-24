@@ -8,7 +8,7 @@
 <hr id="first" />
 ## はじめに
 
-Atomとは拡張機能が豊富なエディターソフトです。　
+Atomとは拡張機能が豊富なエディターソフトです。  
 あらゆる言語が使用可能でプログラムを製作するうえで便利な機能が豊富。
 
 
@@ -16,9 +16,9 @@ Atomとは拡張機能が豊富なエディターソフトです。　
 
 <hr id="1" />
 ## 下記のコンパイルエラー対処法
-*Pthread*関係で次のファイルをダウンロードする．
-libpthread-2.8.0-3-mingw32-dll-2.tar.lzma
-pthreads-w32-2.8.0-3-mingw32-dev.tar.lzma
+*Pthread*関係で次のファイルをダウンロードする  
+libpthread-2.8.0-3-mingw32-dll-2.tar.lzma  
+pthreads-w32-2.8.0-3-mingw32-dev.tar.lzma　　
 lzmaで圧縮されているので，7zipで展開する。
 
 ```
