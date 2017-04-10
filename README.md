@@ -14,7 +14,7 @@
 ## はじめに
 
 1. Githubには書き方がある**Markdown**と調べればいくらでも出てくる。[Markdownでいこう](https://gist.github.com/wate/7072365)
-- 「markdown文書」(http://kojika17.com/2013/01/starting-markdown.html)
+- [Markdown文書](http://kojika17.com/2013/01/starting-markdown.html)
 
 2. スクリプトには書き方がある、私はクックパッド社_CoffeeScrip_のスタイルガイドを基準として書くようにしている。
 
