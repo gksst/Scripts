@@ -42,7 +42,8 @@ print("End")
 <hr id="rename" />
 
 ## クライアントスクリプト
-DHCPに設定すバッチ。
+
++ 1 DHCPに設定すバッチ。
 ****.bat　←形式で保存すること。
 
 ```rb
@@ -59,7 +60,8 @@ ipconfig /all
 pause
 ```
 
-### 固定IP設定するバッチ。
++ 2 固定IP設定するバッチ。
+
 ```rb
 @echo off
 pause
