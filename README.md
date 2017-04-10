@@ -39,8 +39,44 @@ print("End")
 
 <hr id="rename" />
 ## クライアントスクリプト
-準備中
+DHCPに設定すバッチ。
+****.bat　←形式で保存すること。
 
+```rb
+@echo off
+pause
+
+set IFNAME="ローカル エリア接続"
+
+netsh interface ipv4 set address name=%IFNAME% dhcp
+netsh interface ipv4 set dnsservers name=%IFNAME% dhcp
+
+ipconfig /all
+
+pause
+```
+
+固定IP設定するバッチ。
+
+```rb
+@echo off
+pause
+
+set IFNAME="ローカル エリア接続"
+set IPADDR=xxx.xxx.xxx.xxx
+set MASK=xxx.xxx.xxx.xxx
+set GW=xxx.xxx.xxx.xxx
+set DNS1=xxx.xxx.xxx.xxx
+set DNS2=xxx.xxx.xxx.xxx
+
+netsh interface ipv4 set address name=%IFNAME% static %IPADDR% %MASK% %GW% 1
+netsh interface ipv4 set dnsservers name=%IFNAME% static %DNS1% primary validate=no
+netsh interface ipv4 add dnsservers name=%IFNAME% %DNS2% index=2 validate=no
+
+ipconfig /all
+
+pause
+```
 
 ##ATOMで開発
 ATOMというエディタは様々な言語をサポートしている。  
