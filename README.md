@@ -34,7 +34,26 @@ print("End")
 <hr id="netsc" />
 
 ## ネットワークスクリプト
-準備中
+
+netshコマンドでTCP/IPパラメータを設定
+PSを開いて以下のコマンドを打つ
+
+
+1. C:\>netsh  ……netshコマンドの起動
+2. netsh>interface  ……interfaceコンテキストへ移動
+3. netsh interface>ip  ……ip（ipv4）コンテキストへ移動
+4. netsh interface ipv4>  ……Windows Vista／Server 2008以降ではip→ipv4となっている
+5. netsh interface ipv4>?  ...コマンド一覧表示 参考までに
+6. netsh interface ipv4>set address "name＝お名前"static 192.###.###.### 255.##.###.###
+
+以下結果出力
+```rb
+PS C:\Windows\system32> cd ../
+PS C:\Windows> cd ../
+PS C:\> netsh
+netsh interface>ip
+netsh interface ipv4>set address "ローカルエリア接続"static 192.168.1.100 255.255.255.0
+```
 
 <hr id="serversc" />
 
