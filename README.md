@@ -58,7 +58,68 @@ netsh interface ipv4>set address "ローカルエリア接続"static 192.168.1.1
 <hr id="serversc" />
 
 ## サーバースクリプト
-準備中
+クライアントのWindowsUpdateの向き先を変えるバッチ
+
+```rb
+@echo off
+rem WSUSサーバのURL
+set THE_WSUS=http://192.168.???.???:8530
+rem 自動更新オプション　2:DL前通知、3:自動DL＆インストール前通知、4:自動DL＆スケジュールインストール
+set AUOptions=4
+rem 自動インストールする時間（24時間）
+set ScheduledInstallTime=17
+rem 自動インストールする曜日　0:毎日、1:日曜、2:月曜、……、7:土曜
+set ScheduledInstallDay=3
+
+set /P STR_INPUT="OSに合わせて1～4の値を入力してください。1.Windows7  2.Windows8  3.Windows8.1  4.Windows10 :"
+
+if "%STR_INPUT%" equ "1" (
+set ComGroup=win7
+) else if "%STR_INPUT%" equ "2" (
+set ComGroup=win8
+) else if "%STR_INPUT%" equ "3" (
+set ComGroup=win8.1
+) else if "%STR_INPUT%" equ "4" (
+set ComGroup=win10
+)
+
+
+cls
+echo WSUSサーバを使うよう設定します。
+echo  [ %THE_WSUS% ]
+pause
+reg add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings" /f /v ProxyOverride /t reg_sz /d "192.168.???.???;<local>"
+
+reg.exe delete "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate" /f
+
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 0 /f
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" /v UseWUServer /t REG_DWORD /d 1 /f
+
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d "%AUOptions%" /f
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f
+
+
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" /v ScheduledInstallDay /t REG_DWORD /d "%ScheduledInstallDay%" /f
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate\AU" /v ScheduledInstallTime /t REG_DWORD /d "%ScheduledInstallTime%" /f
+
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate" /v DoNotConnectToWindowsUpdateInternetLocations /t REG_DWORD /d 1 /f
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate" /v TargetGroup /t REG_SZ /d "%ComGroup%" /f
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate" /v TargetGroupEnabled /t REG_DWORD /d 1 /f
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate" /v WUServer /t REG_SZ /d "%THE_WSUS%" /f
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\WindowsUpdate" /v WUStatusServer /t REG_SZ /d "%THE_WSUS%" /f
+
+
+net stop bits
+net stop wuauserv
+net start wuauserv
+net start bits
+wuapp.exe
+echo.
+echo 設定が完了しました。
+pause
+
+
+```
 
 <hr id="rename" />
 
