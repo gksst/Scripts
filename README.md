@@ -58,7 +58,15 @@ netsh interface ipv4>set address "ローカルエリア接続"static 192.168.1.1
 <hr id="serversc" />
 
 ## サーバースクリプト
+
 クライアントのWindowsUpdateの向き先を変えるバッチ
+下記のHKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Nodeは64bitのレジストリキーであるため32bitは別のレジストリキーなので注意！
+クライアント端末側で
+HKEY_LOCAL_MACHINEのSOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate
+キーにある以下の3つの値を消す必要がある場合がある。　なぜ必要かはGOOGLE先生へ
+・AccountDomainSid
+・PingID
+・SusClientId
 
 ```rb
 @echo off
